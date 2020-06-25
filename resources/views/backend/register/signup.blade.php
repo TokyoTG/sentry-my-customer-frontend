@@ -24,22 +24,33 @@
                                                     height="auto" /> </a>
                                         </div>
 
-                                        <h6 class="h5 mb-0 mt-4">Register</h6>
-                                        <p class="text-muted mt-1 mb-5">
-                                            Enter your Phone Number to get started
-                                        </p>
+                                        <h6 class="h5 mb-0 mt-4 text-center">Register</h6>
 
-                                        <form action="#" class="authentication-form">
-
+                                        <form action="{{route('register')}}" class="authentication-form" method="POST">
+                                            @csrf
                                             <div class="form-group">
+                                                <label class="form-control-label">First Name</label>
+                                                <div class="input-group input-group-merge">
+                                                    <input type="text" id="first_name" name="first_name" class="form-control" required>
+                                                </div>
+                                                <label class="form-control-label">Last Name</label>
+                                                <div class="input-group input-group-merge">
+                                                    <input type="text" id="last_name" name="last_name" class="form-control" required>
+                                                </div>
+                                                <label class="form-control-label">Email</label>
+                                                <div class="input-group input-group-merge">
+                                                    <input type="email" id="email" name="email" class="form-control" required>
+                                                </div>
+                                                <label class="form-control-label">Password</label>
+                                                <div class="input-group input-group-merge">
+                                                    <input type="password" id="password" name="password" class="form-control" required>
+                                                </div>
                                                 <label class="form-control-label">Phone Number</label>
                                                 <div class="input-group input-group-merge">
                                                     <div class="input-group-prepend">
 
                                                     </div>
-                                                    <input type="tel" id="phone" class="form-control">
-
-
+                                                    <input type="tel" id="phone" name="phone_number" class="form-control" required>
                                                 </div>
                                             </div>
 

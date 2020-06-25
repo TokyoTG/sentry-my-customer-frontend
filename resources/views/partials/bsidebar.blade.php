@@ -85,7 +85,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/backend/settings">
+                    <a href="{{route('settings')}}">
                         <i data-feather="book"></i>
                         <span> Settings </span>
                     </a>
