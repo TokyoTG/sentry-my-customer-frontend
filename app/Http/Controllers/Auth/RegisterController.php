@@ -92,12 +92,14 @@ class RegisterController extends Controller
                     // get the api_token and phone_number from the response
                     $api_token = $res->User->api_token;
                     $phone_number = $res->User->phone_number;
+                    $user_id = $response->user->_id;
 
                     // set api_token and phone number cookie
                     Cookie::queue(
                         'api_token',
                         $api_token
                     );
+                    Cookie::queue('user_id', $user_id);
                     Cookie::queue('phone_number', $phone_number);
                     return redirect('/backend/activate');
                 }
