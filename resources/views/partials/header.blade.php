@@ -18,10 +18,15 @@
                 </div>
             </div>
             <div class="nav__button__container">
+                 @if(!isset($_COOKIE['api_token']))
                 <button class="nav__button "><a href="/admin/login" class="nav__button__link">Log In</a></button>
-                <button class="nav__button btn-nav-active"><a href="/backend/register"
+                <button class="nav__button btn-nav-active"><a href="/admin/register"
                         class="nav__button__link__active">Sign
                         Up</a></button>
+                @elseif(isset($_COOKIE['api_token']))
+                    <button class="nav__button btn-nav-active"><a href="#"
+                        class="nav__button__link__active">Logout</a></button>
+                @endif
             </div>
             <div class="hamburger-container">
                 <div class="hamburger__menu">
@@ -51,10 +56,14 @@
                     </ul>
                 </div>
                 <div class="mobile__nav__button__container">
-                    <button class="mobile__nav__button"><a href="" class="mobile__nav__button__link">Log
+                    @if(!isset($_COOKIE['api_token']))
+                    <button class="mobile__nav__button"><a href="/admin/login" class="mobile__nav__button__link">Log
                             In</a></button>
-                    <button class="mobile__nav__button"><a href="" class="mobile__nav__button__link">Sign
+                    <button class="mobile__nav__button"><a href="/admin/register" class="mobile__nav__button__link">Sign
                             Up</a></button>
+                    @elseif(isset($_COOKIE['api_token']))
+                   <button class="mobile__nav__button"><a href="#" class="mobile__nav__button__link">Logout</a></button>
+                @endif
                 </div>
             </div>
         </div>
