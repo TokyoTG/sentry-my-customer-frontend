@@ -97,7 +97,7 @@ class RegisterController extends Controller
                     // set api_token and phone number cookie
                     Cookie::queue('api_token', $api_token);
                     Cookie::queue('phone_number', $phone_number);
-                    Cookie::queue('phone_number', $$user_id);
+                    Cookie::queue('phone_number', $user_id);
                     return redirect('/admin/activate');
                 }
 
@@ -105,7 +105,7 @@ class RegisterController extends Controller
                     return view('errors.500');
                 }
             } else {
-                return redirect('/backend/register');
+                return redirect('/admin/register');
             }
         } catch (\Exception $e) {
             Log::error('Catch error: RegisterController - ' . $e->getMessage());
