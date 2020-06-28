@@ -27,14 +27,13 @@ class SingleTransactionController extends Controller
                 return view('errors.500');
             }
             if ($statusCode == 401) {
-                return view('backend.transactions.index')->with('error', "Unauthoized toke");
+                return redirect('/admin/transactions')->with('error', "Unauthoized toke");
             }
             if ($statusCode == 404) {
-                return view('backend.transactions.index')->with('error', "Transaction not found");
+                return redirect('/admin/transactions')->with('error', "Transaction not found");
             }
         } catch (\Exception $e) {
-            // return view('errors.500');
-            return view('backend.transactions.index')->with('error', "Unable to connect to server");
+            return view('errors.500');
         }
     }
 }

@@ -47,7 +47,7 @@ class LoginController extends Controller
 
     public function index()
     {
-        if (Cookie::get('api_token')){
+        if (Cookie::get('api_token')) {
             return redirect()->route('dashboard');
         }
         return view('backend.login');
@@ -55,7 +55,7 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $validation = Validator::make(request()->all(),[
+        $validation = Validator::make(request()->all(), [
             'phone_number' => 'required|numeric|digits_between:1,16',
             'password' => 'required'
         ]);
@@ -108,7 +108,7 @@ class LoginController extends Controller
             }
         } catch (\Exception $e) {
             // log $e->getMessage() when error loggin is setup
-            Log::error("catch error: LoginController - ".$e->getMessage());
+            Log::error("catch error: LoginController - " . $e->getMessage());
             $request->session()->flash('message', 'something went wrong try again in a few minutes');
             return redirect()->route('login');
         }
