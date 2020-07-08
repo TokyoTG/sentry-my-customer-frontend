@@ -31,8 +31,9 @@
                         <p class="sub-header">
                             This is the list of all complaints submitted:
                         </p>
-
-                        <table id="basic-datatable" class="table dt-responsive">
+                        @isset($complaints)
+                        @if (count($complaints) > 0)
+                                                    <table id="basic-datatable" class="table dt-responsive">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -44,9 +45,8 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
-
-                            @foreach($responses->data->complaints as $response)
+                            <tbody>                         
+                            @foreach($complaints as $response)
                                 <tr>
                                     <td>{{ $response->_id}}</td>
                                     <td>{{ $response->name}}</td>
@@ -56,20 +56,22 @@
                                     <td>{{ $response->status}}</td>
                                     <td>{{ $response->date}}</td>
                                     <td>
-                                    
                                     <form action="{{ route('complaint.destroy', $response->_id) }}" method="POST">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <button class="btn btn-danger">Delete</button>
-                        </form></td>
+                                    </form></td>
                                     <!-- <td><a href="{{ route('complaint.destroy', $response->_id) }}" class="btn btn-danger "> -->
-   <!-- Delete -->
-<!-- </a> -->
                                     </td>
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                        @else
+                            <p>You don't have any complaint in your log</p>
+                        @endif
+                        @endisset
+
 
                     </div> <!-- end card body-->
                 </div> <!-- end card -->
