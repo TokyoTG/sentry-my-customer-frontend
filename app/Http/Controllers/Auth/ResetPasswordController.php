@@ -59,11 +59,11 @@ class ResetPasswordController extends Controller
             $client =  new \GuzzleHttp\Client();
             $data = [
                 "token" => $request->input('otp'),
-                "password"=>$request->input('password')
+                "password" => $request->input('password')
             ];
             // return print_r($data);
             $this->headers = ['form_params' => $data];
-            $response = $client->post($this->host . '/recover', $this->headers);
+            $response = $client->post($this->host . '/reset', $this->headers);
 
             if ($response->getStatusCode() == 200) {
 

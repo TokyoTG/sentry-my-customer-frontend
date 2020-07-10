@@ -72,10 +72,13 @@ class ForgotPasswordController extends Controller
 
                     $res_data = $response->data;
                     // store data to cookie
+
                     Cookie::queue('phone_number', $data['phone_number']);
 
+
+
                     $request->session()->flash('alert-class', 'alert-success');
-                    $request->session()->flash('message', $response->message);
+                    $request->session()->flash('message', $response->message . " " . $res_data->otp);
                     return redirect()->route('reset_password');
                 } else {
                     $message = isset($response->Message) ? $response->Message : $response->message;
