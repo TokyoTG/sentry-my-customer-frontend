@@ -200,7 +200,7 @@
         $("#ExportReporttoPdf").on("click", function() {
             $('.buttons-pdf').trigger('click');
         });
-
+    })
     </script>
 
     <script>
